@@ -1,8 +1,9 @@
-import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
 import { events } from "@/lib/events";
+import { heroSlides } from "@/lib/heroSlides";
 import { Reveal } from "@/components/Reveal";
+import { HeroSlideshow } from "@/components/HeroSlideshow";
 
 export default function Home() {
   const nextEvent = events[0];
@@ -10,13 +11,7 @@ export default function Home() {
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
       <section className="relative overflow-hidden">
-        <Image
-          src="/hero-congregation.jpg"
-          alt="Prayer Movement International congregation in worship"
-          fill
-          priority
-          className="object-cover"
-        />
+        <HeroSlideshow slides={heroSlides} />
         <div className="animate-gradient-move absolute inset-0 bg-gradient-to-br from-brand-purple-dark/65 via-brand-purple/50 to-brand-magenta/40 bg-[length:200%_200%]" />
         <div className="relative mx-auto flex max-w-5xl flex-col items-start gap-6 px-4 py-16 sm:px-6 sm:py-24">
           <h1
