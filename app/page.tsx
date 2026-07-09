@@ -98,6 +98,21 @@ export default function Home() {
 
       <section className="border-t border-zinc-200 dark:border-zinc-800">
         <Reveal className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6">
+          <h2 className="text-2xl font-semibold">Need Prayer?</h2>
+          <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
+            Share what&apos;s on your heart and our prayer team will stand with you in faith.
+          </p>
+          <Link
+            href="/prayer-requests"
+            className="mt-6 inline-block rounded-full bg-brand-gold px-6 py-3 text-sm font-semibold text-brand-purple-dark transition-all duration-300 hover:scale-105 hover:brightness-95"
+          >
+            Submit a Prayer Request
+          </Link>
+        </Reveal>
+      </section>
+
+      <section className="border-t border-zinc-200 dark:border-zinc-800">
+        <Reveal className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6">
           <h2 className="text-2xl font-semibold">Join Our WhatsApp Prayer Group</h2>
           <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
             We pray together every day. Join the WhatsApp group to receive prayer points and
