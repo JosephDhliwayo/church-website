@@ -1,5 +1,6 @@
 export const siteConfig = {
   name: "Prayer Movement International",
+  url: "https://prayermovementinternational.org",
   tagline: "Transforming Lives by the Superpower of Prophecy",
   address: "Harare, Zimbabwe",
   phone: "+263787999918",
