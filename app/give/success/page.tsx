@@ -14,7 +14,7 @@ type Props = {
 
 function Wrapper({ title, body }: { title: string; body: string }) {
   return (
-    <div className="mx-auto max-w-xl px-4 py-24 text-center sm:px-6">
+    <div className="mx-auto max-w-xl px-4 py-24 sm:px-6">
       <h1 className="text-2xl font-bold">{title}</h1>
       <p className="mt-3 text-zinc-600 dark:text-zinc-400">{body}</p>
       <Link

@@ -102,9 +102,9 @@ export default function Home() {
       </section>
 
       <section className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6">
-        <Reveal className="text-center">
+        <Reveal>
           <h2 className="text-2xl font-semibold">Gallery</h2>
-          <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
+          <p className="mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
             Moments from our services, events, and community life.
           </p>
         </Reveal>
@@ -125,7 +125,7 @@ export default function Home() {
             </Reveal>
           ))}
         </div>
-        <div className="mt-8 text-center">
+        <div className="mt-8">
           <Link
             href="/gallery"
             className="inline-block rounded-full border border-brand-purple-dark px-6 py-3 text-sm font-semibold text-brand-purple-dark transition-all duration-300 hover:scale-105 hover:bg-brand-purple-dark hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-brand-purple-dark"
@@ -136,9 +136,9 @@ export default function Home() {
       </section>
 
       <section className="border-t border-zinc-200 dark:border-zinc-800">
-        <Reveal className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6">
+        <Reveal className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
           <h2 className="text-2xl font-semibold">Testimonials</h2>
-          <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
+          <p className="mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
             Stories of what God has done in the lives of our community.
           </p>
 
@@ -147,7 +147,7 @@ export default function Home() {
               Testimonies coming soon &mdash; check back for stories of God&apos;s faithfulness.
             </p>
           ) : (
-            <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
+            <div className="mt-8 grid gap-4 sm:grid-cols-3">
               {testimonialsPreview.map((testimonial, index) => (
                 <Reveal
                   key={testimonial.name}
@@ -175,9 +175,9 @@ export default function Home() {
       </section>
 
       <section className="border-t border-zinc-200 dark:border-zinc-800">
-        <Reveal className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6">
+        <Reveal className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
           <h2 className="text-2xl font-semibold">Need Prayer?</h2>
-          <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
+          <p className="mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
             Share what&apos;s on your heart and our prayer team will stand with you in faith.
           </p>
           <Link
@@ -190,13 +190,13 @@ export default function Home() {
       </section>
 
       <section className="border-t border-zinc-200 dark:border-zinc-800">
-        <Reveal className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6">
+        <Reveal className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
           <h2 className="text-2xl font-semibold">Join Our WhatsApp Prayer Group</h2>
-          <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
+          <p className="mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
             We pray together every day. Join the WhatsApp group to receive prayer points and
             connect with the community.
           </p>
-          <ul className="mx-auto mt-6 flex max-w-xl flex-col gap-2 sm:flex-row sm:justify-center sm:gap-6">
+          <ul className="mt-6 flex max-w-xl flex-col gap-2 sm:flex-row sm:gap-6">
             {siteConfig.whatsappTimeZones.map((zone) => (
               <li key={zone.region} className="text-sm">
                 <p className="font-semibold text-zinc-900 dark:text-zinc-100">{zone.region}</p>
@@ -216,9 +216,9 @@ export default function Home() {
       </section>
 
       <section className="border-t border-zinc-200 dark:border-zinc-800">
-        <Reveal className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6">
+        <Reveal className="mx-auto max-w-5xl px-4 py-16 sm:px-6">
           <h2 className="text-2xl font-semibold">Support the Ministry</h2>
-          <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
+          <p className="mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
             Give your tithes, offerings, and gifts securely online via EcoCash, OneMoney,
             ZimSwitch, or card &mdash; from Zimbabwe or abroad.
           </p>
