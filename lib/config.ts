@@ -27,8 +27,8 @@ export const siteConfig = {
     { href: "/store", label: "Book Store" },
   ],
   social: {
-    facebook: "https://facebook.com/",
-    instagram: "https://instagram.com/",
-    tiktok: "https://tiktok.com/",
+    facebook: "https://www.facebook.com/share/1DnNoE3WND/?mibextid=wwXIfr",
+    instagram: "https://www.instagram.com/prayer_movement_international?igsh=djQ1ZHhwa2JhdWpo&utm_source=qr",
+    tiktok: "https://www.tiktok.com/@tadiwanasheronal8?_r=1&_t=ZP-97uRsWEmjCY",
   },
 } as const;
