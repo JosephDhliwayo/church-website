@@ -84,13 +84,13 @@ export default function Home() {
         <Reveal>
           <h2 className="text-2xl font-semibold">Service Times</h2>
         </Reveal>
-        <ul className="mt-6 grid gap-4 sm:grid-cols-2">
+        <ul className="mt-6 flex flex-wrap gap-4">
           {siteConfig.serviceTimes.map((service, index) => (
             <Reveal
               key={service.label}
               as="li"
               delay={index * 100}
-              className="rounded-xl border border-zinc-200 p-6 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800"
+              className="w-full rounded-xl border border-zinc-200 p-6 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 sm:w-72"
             >
               <p className="font-semibold">{service.label}</p>
               <p className="text-zinc-600 dark:text-zinc-400">
@@ -147,12 +147,12 @@ export default function Home() {
               Testimonies coming soon &mdash; check back for stories of God&apos;s faithfulness.
             </p>
           ) : (
-            <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
+            <div className="mt-8 flex flex-wrap justify-center gap-4 text-left">
               {testimonialsPreview.map((testimonial, index) => (
                 <Reveal
                   key={testimonial.name}
                   delay={index * 100}
-                  className="rounded-xl border border-zinc-200 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800"
+                  className="w-full rounded-xl border border-zinc-200 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800 sm:w-72"
                 >
                   <p className="text-zinc-600 dark:text-zinc-400">
                     &ldquo;{testimonial.story}&rdquo;
