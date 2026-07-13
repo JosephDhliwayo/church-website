@@ -4,12 +4,14 @@ import { siteConfig } from "@/lib/config";
 import { events } from "@/lib/events";
 import { heroSlides } from "@/lib/heroSlides";
 import { galleryPhotos } from "@/lib/gallery";
+import { testimonials } from "@/lib/testimonials";
 import { Reveal } from "@/components/Reveal";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 
 export default function Home() {
   const nextEvent = events[0];
   const galleryPreview = galleryPhotos.slice(3, 9);
+  const testimonialsPreview = testimonials.slice(0, 3);
 
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
@@ -131,6 +133,45 @@ export default function Home() {
             View Full Gallery
           </Link>
         </div>
+      </section>
+
+      <section className="border-t border-zinc-200 dark:border-zinc-800">
+        <Reveal className="mx-auto max-w-5xl px-4 py-16 text-center sm:px-6">
+          <h2 className="text-2xl font-semibold">Testimonials</h2>
+          <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
+            Stories of what God has done in the lives of our community.
+          </p>
+
+          {testimonialsPreview.length === 0 ? (
+            <p className="mt-8 text-zinc-600 dark:text-zinc-400">
+              Testimonies coming soon &mdash; check back for stories of God&apos;s faithfulness.
+            </p>
+          ) : (
+            <div className="mt-8 grid gap-4 text-left sm:grid-cols-3">
+              {testimonialsPreview.map((testimonial, index) => (
+                <Reveal
+                  key={testimonial.name}
+                  delay={index * 100}
+                  className="rounded-xl border border-zinc-200 p-6 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg dark:border-zinc-800"
+                >
+                  <p className="text-zinc-600 dark:text-zinc-400">
+                    &ldquo;{testimonial.story}&rdquo;
+                  </p>
+                  <p className="mt-3 font-semibold text-zinc-900 dark:text-zinc-100">
+                    {testimonial.name}
+                  </p>
+                </Reveal>
+              ))}
+            </div>
+          )}
+
+          <Link
+            href="/testimonials"
+            className="mt-8 inline-block rounded-full border border-brand-purple-dark px-6 py-3 text-sm font-semibold text-brand-purple-dark transition-all duration-300 hover:scale-105 hover:bg-brand-purple-dark hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-brand-purple-dark"
+          >
+            View All Testimonials
+          </Link>
+        </Reveal>
       </section>
 
       <section className="border-t border-zinc-200 dark:border-zinc-800">
