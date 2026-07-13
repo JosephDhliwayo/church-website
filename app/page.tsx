@@ -1,12 +1,15 @@
+import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
 import { events } from "@/lib/events";
 import { heroSlides } from "@/lib/heroSlides";
+import { galleryPhotos } from "@/lib/gallery";
 import { Reveal } from "@/components/Reveal";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 
 export default function Home() {
   const nextEvent = events[0];
+  const galleryPreview = galleryPhotos.slice(3, 9);
 
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
@@ -94,6 +97,40 @@ export default function Home() {
             </Reveal>
           ))}
         </ul>
+      </section>
+
+      <section className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6">
+        <Reveal className="text-center">
+          <h2 className="text-2xl font-semibold">Gallery</h2>
+          <p className="mx-auto mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
+            Moments from our services, events, and community life.
+          </p>
+        </Reveal>
+        <div className="mt-8 grid grid-cols-2 gap-4 sm:grid-cols-3">
+          {galleryPreview.map((photo, index) => (
+            <Reveal
+              key={photo.src}
+              delay={index * 100}
+              className="group relative aspect-square overflow-hidden rounded-xl"
+            >
+              <Image
+                src={photo.src}
+                alt={photo.alt}
+                fill
+                sizes="(min-width: 640px) 33vw, 50vw"
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+            </Reveal>
+          ))}
+        </div>
+        <div className="mt-8 text-center">
+          <Link
+            href="/gallery"
+            className="inline-block rounded-full border border-brand-purple-dark px-6 py-3 text-sm font-semibold text-brand-purple-dark transition-all duration-300 hover:scale-105 hover:bg-brand-purple-dark hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-brand-purple-dark"
+          >
+            View Full Gallery
+          </Link>
+        </div>
       </section>
 
       <section className="border-t border-zinc-200 dark:border-zinc-800">
