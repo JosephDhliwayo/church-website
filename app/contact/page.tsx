@@ -16,10 +16,6 @@ export default function ContactPage() {
           <dt className="font-semibold text-zinc-900 dark:text-zinc-100">Phone</dt>
           <dd>{siteConfig.phone}</dd>
         </div>
-        <div>
-          <dt className="font-semibold text-zinc-900 dark:text-zinc-100">Email</dt>
-          <dd>{siteConfig.email}</dd>
-        </div>
       </dl>
     </Reveal>
   );

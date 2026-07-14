@@ -11,9 +11,7 @@ export function Footer() {
         <div className="flex flex-col gap-2">
           <p className="font-semibold text-white">{siteConfig.name}</p>
           <p>{siteConfig.address}</p>
-          <p>
-            {siteConfig.phone} &middot; {siteConfig.email}
-          </p>
+          <p>{siteConfig.phone}</p>
           <p className="mt-4 text-xs text-white/50">
             &copy; {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </p>

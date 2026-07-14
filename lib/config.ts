@@ -4,7 +4,6 @@ export const siteConfig = {
   tagline: "Transforming Lives by the Superpower of Prophecy",
   address: "Harare, Zimbabwe",
   phone: "+263787999918",
-  email: "info@example.org",
   serviceTimes: [
     { day: "Every day", time: "8:00 PM – 9:00 PM (CAT)", label: "WhatsApp Prayer Service" },
   ],
