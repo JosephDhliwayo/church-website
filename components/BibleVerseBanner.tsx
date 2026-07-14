@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 import type { BibleVerse } from "@/lib/bibleVerses";
 
-const ROTATE_MS = 5 * 60 * 1000;
+const ROTATE_MS = 20 * 1000;
 const FADE_MS = 400;
 
 export function BibleVerseBanner({ verses }: { verses: BibleVerse[] }) {
@@ -31,14 +31,16 @@ export function BibleVerseBanner({ verses }: { verses: BibleVerse[] }) {
   const verse = verses[index];
 
   return (
-    <div className="border-b border-white/10 bg-brand-purple-dark">
+    <div className="border-b border-white/10">
       <div
-        className={`mx-auto max-w-5xl px-4 py-3 text-center transition-opacity duration-300 ease-in-out sm:px-6 ${
+        className={`mx-auto max-w-5xl px-4 py-8 text-center transition-opacity duration-300 ease-in-out sm:px-6 ${
           visible ? "opacity-100" : "opacity-0"
         }`}
       >
-        <p className="text-sm italic text-white/90">&ldquo;{verse.text}&rdquo;</p>
-        <p className="mt-1 text-xs font-semibold uppercase tracking-wide text-brand-gold">
+        <p className="mx-auto max-w-2xl text-base italic text-white/90 sm:text-lg">
+          &ldquo;{verse.text}&rdquo;
+        </p>
+        <p className="mt-2 text-xs font-semibold uppercase tracking-wide text-brand-gold">
           {verse.reference}
         </p>
       </div>

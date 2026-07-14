@@ -1,9 +1,12 @@
 import { SocialLinks } from "@/components/SocialLinks";
+import { BibleVerseBanner } from "@/components/BibleVerseBanner";
 import { siteConfig } from "@/lib/config";
+import { bibleVerses } from "@/lib/bibleVerses";
 
 export function Footer() {
   return (
     <footer className="bg-brand-purple-dark">
+      <BibleVerseBanner verses={bibleVerses} />
       <div className="mx-auto flex max-w-5xl flex-col gap-4 px-4 py-8 text-sm text-white/70 sm:flex-row sm:items-end sm:justify-between sm:px-6">
         <div className="flex flex-col gap-2">
           <p className="font-semibold text-white">{siteConfig.name}</p>
