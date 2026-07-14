@@ -28,7 +28,7 @@ export function Header() {
           onClick={() => setOpen(false)}
           className="flex min-w-0 items-center gap-2 sm:gap-3"
         >
-          <Logo className="h-8 w-8 shrink-0 sm:h-9 sm:w-9" />
+          <Logo className="h-10 w-10 shrink-0 sm:h-12 sm:w-12" />
           <span className="truncate text-xs font-semibold uppercase tracking-wide text-white sm:text-base">
             {siteConfig.name}
           </span>

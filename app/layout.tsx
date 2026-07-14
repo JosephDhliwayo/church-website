@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { BibleVerseBanner } from "@/components/BibleVerseBanner";
 import { siteConfig } from "@/lib/config";
+import { bibleVerses } from "@/lib/bibleVerses";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -33,6 +35,7 @@ export default function RootLayout({
     >
       <body className="flex min-h-full flex-col">
         <Header />
+        <BibleVerseBanner verses={bibleVerses} />
         <main className="flex flex-1 flex-col">{children}</main>
         <Footer />
       </body>
