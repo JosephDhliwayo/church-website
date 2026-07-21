@@ -8,6 +8,10 @@ export const siteConfig = {
     { day: "Every day", time: "8:00 PM – 9:00 PM (CAT)", label: "WhatsApp Prayer Service" },
   ],
   whatsappGroupUrl: "https://chat.whatsapp.com/JxbT2XkrgRVA0ie6xjRYle",
+  youtube: {
+    channelId: "UCeLO1vVIDNV52IoTXvSRa0Q",
+    channelUrl: "https://youtube.com/@prayermovementinternational",
+  },
   whatsappTimeZones: [
     { region: "Zimbabwe (CAT)", time: "8:00 PM – 9:00 PM" },
     { region: "UK (GMT/BST)", time: "6:00 PM – 7:00 PM / 7:00 PM – 8:00 PM" },
@@ -17,6 +21,7 @@ export const siteConfig = {
     { href: "/", label: "Home" },
     { href: "/about", label: "About" },
     { href: "/sermons", label: "Sermons" },
+    { href: "/live", label: "Live" },
     { href: "/events", label: "Events" },
     { href: "/contact", label: "Contact" },
   ],

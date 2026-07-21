@@ -82,6 +82,37 @@ export default function Home() {
 
       <section className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6">
         <Reveal>
+          <h2 className="text-2xl font-semibold">Watch Live</h2>
+          <p className="mt-3 max-w-xl text-zinc-600 dark:text-zinc-400">
+            Join our services and events live on YouTube.
+          </p>
+        </Reveal>
+        <Reveal
+          delay={100}
+          className="mt-8 aspect-video w-full overflow-hidden rounded-xl border border-zinc-200 dark:border-zinc-800"
+        >
+          <iframe
+            src={`https://www.youtube.com/embed/live_stream?channel=${siteConfig.youtube.channelId}`}
+            title="Prayer Movement International live stream"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowFullScreen
+            className="h-full w-full"
+          />
+        </Reveal>
+        <div className="mt-6">
+          <a
+            href={siteConfig.youtube.channelUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block rounded-full border border-brand-purple-dark px-6 py-3 text-sm font-semibold text-brand-purple-dark transition-all duration-300 hover:scale-105 hover:bg-brand-purple-dark hover:text-white dark:border-white dark:text-white dark:hover:bg-white dark:hover:text-brand-purple-dark"
+          >
+            Subscribe on YouTube
+          </a>
+        </div>
+      </section>
+
+      <section className="mx-auto w-full max-w-5xl px-4 py-16 sm:px-6">
+        <Reveal>
           <h2 className="text-2xl font-semibold">Service Times</h2>
         </Reveal>
         <ul className="mt-6 grid gap-4 sm:grid-cols-2">
