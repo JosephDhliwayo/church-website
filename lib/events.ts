@@ -20,8 +20,16 @@ export const events: ChurchEvent[] = [
   },
 ];
 
-export const upcomingEvents = events.filter((event) => {
+function startOfToday() {
   const today = new Date();
   today.setHours(0, 0, 0, 0);
-  return new Date(event.isoDate) >= today;
-});
+  return today;
+}
+
+export const upcomingEvents = events
+  .filter((event) => new Date(event.isoDate) >= startOfToday())
+  .sort((a, b) => a.isoDate.localeCompare(b.isoDate));
+
+export const pastEvents = events
+  .filter((event) => new Date(event.isoDate) < startOfToday())
+  .sort((a, b) => b.isoDate.localeCompare(a.isoDate));

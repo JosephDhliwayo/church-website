@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { siteConfig } from "@/lib/config";
-import { upcomingEvents } from "@/lib/events";
+import { upcomingEvents, pastEvents } from "@/lib/events";
 
 export const metadata = { title: `Events | ${siteConfig.name}` };
 
@@ -65,6 +65,44 @@ export default function EventsPage() {
               </div>
             </div>
           ))}
+        </div>
+      )}
+
+      {pastEvents.length > 0 && (
+        <div className="mt-16">
+          <h2 className="text-2xl font-bold tracking-tight text-zinc-500 dark:text-zinc-400">
+            Past Events
+          </h2>
+          <div className="mt-6 space-y-4">
+            {pastEvents.map((event) => (
+              <div
+                key={event.name}
+                className="overflow-hidden rounded-xl border border-zinc-200 opacity-75 grayscale transition-all duration-300 hover:opacity-100 hover:grayscale-0 dark:border-zinc-800 sm:flex"
+              >
+                {event.image && (
+                  <div className="relative aspect-[3/4] w-full shrink-0 sm:w-48">
+                    <Image
+                      src={event.image}
+                      alt={`${event.name} flyer`}
+                      fill
+                      sizes="(min-width: 640px) 12rem, 100vw"
+                      className="object-cover"
+                    />
+                  </div>
+                )}
+                <div className="flex-1 px-4 py-4 sm:px-6 sm:py-5">
+                  <p className="text-xs font-semibold uppercase tracking-wide text-zinc-500">
+                    {event.date}
+                  </p>
+                  <h3 className="mt-1 text-lg font-bold text-zinc-900 dark:text-zinc-100">
+                    {event.name}
+                  </h3>
+                  <p className="mt-2 text-sm text-zinc-600 dark:text-zinc-400">{event.venue}</p>
+                  <p className="mt-1 text-sm text-zinc-500">{event.speakers.join(" · ")}</p>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </div>
