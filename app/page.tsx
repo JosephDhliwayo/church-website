@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { siteConfig } from "@/lib/config";
-import { events } from "@/lib/events";
+import { upcomingEvents } from "@/lib/events";
 import { heroSlides } from "@/lib/heroSlides";
 import { galleryPhotos } from "@/lib/gallery";
 import { testimonials } from "@/lib/testimonials";
@@ -9,7 +9,7 @@ import { Reveal } from "@/components/Reveal";
 import { HeroSlideshow } from "@/components/HeroSlideshow";
 
 export default function Home() {
-  const nextEvent = events[0];
+  const nextEvent = upcomingEvents[0];
   const galleryPreview = galleryPhotos.slice(3, 9);
   const testimonialsPreview = testimonials.slice(0, 3);
 

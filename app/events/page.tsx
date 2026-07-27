@@ -1,6 +1,6 @@
 import Image from "next/image";
 import { siteConfig } from "@/lib/config";
-import { events } from "@/lib/events";
+import { upcomingEvents } from "@/lib/events";
 
 export const metadata = { title: `Events | ${siteConfig.name}` };
 
@@ -9,13 +9,13 @@ export default function EventsPage() {
     <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
       <h1 className="text-3xl font-bold tracking-tight">Upcoming Events</h1>
 
-      {events.length === 0 ? (
+      {upcomingEvents.length === 0 ? (
         <p className="mt-6 text-zinc-600 dark:text-zinc-400">
           No upcoming events at the moment &mdash; check back soon.
         </p>
       ) : (
         <div className="mt-8 space-y-6">
-          {events.map((event, index) => (
+          {upcomingEvents.map((event, index) => (
             <div
               key={event.name}
               style={{ animationDelay: `${index * 150}ms` }}
