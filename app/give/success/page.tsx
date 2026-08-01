@@ -3,7 +3,8 @@ import Link from "next/link";
 import { db } from "@/lib/db";
 import { donations } from "@/lib/schema";
 import { fundLabel } from "@/lib/funds";
-import { getPaynowClient, getSiteUrl } from "@/lib/paynow";
+import { getPesepayClient } from "@/lib/pesepay";
+import { getSiteUrl } from "@/lib/site";
 import { siteConfig } from "@/lib/config";
 
 export const metadata = { title: `Thank You | ${siteConfig.name}` };
@@ -56,11 +57,11 @@ export default async function GiveSuccessPage({ searchParams }: Props) {
 
   let status = donation.status;
 
-  if (status === "pending" && donation.gateway === "paynow" && donation.pollUrl) {
+  if (status === "pending" && donation.gateway === "pesepay" && donation.pollUrl) {
     try {
-      const paynow = getPaynowClient(`${getSiteUrl()}/give/success?reference=${reference}`);
-      const result = await paynow.pollTransaction(donation.pollUrl);
-      if (result?.status?.toLowerCase() === "paid") {
+      const pesepay = getPesepayClient(`${getSiteUrl()}/give/success?reference=${reference}`);
+      const result = await pesepay.pollTransaction(donation.pollUrl);
+      if (result?.paid) {
         status = "paid";
         await db
           .update(donations)

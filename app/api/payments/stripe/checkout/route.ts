@@ -5,7 +5,7 @@ import { db } from "@/lib/db";
 import { donations } from "@/lib/schema";
 import { FUNDS, fundLabel } from "@/lib/funds";
 import { getStripeClient } from "@/lib/stripe";
-import { getSiteUrl } from "@/lib/paynow";
+import { getSiteUrl } from "@/lib/site";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();

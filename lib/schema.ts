@@ -14,6 +14,7 @@ export const donations = pgTable("donations", {
   method: text("method"),
   status: text("status").notNull().default("pending"),
   paynowReference: text("paynow_reference"),
+  pesepayReference: text("pesepay_reference"),
   pollUrl: text("poll_url"),
   stripeSessionId: text("stripe_session_id"),
   createdAt: timestamp("created_at").defaultNow().notNull(),

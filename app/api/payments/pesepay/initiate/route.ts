@@ -4,13 +4,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { db } from "@/lib/db";
 import { donations } from "@/lib/schema";
 import { FUNDS, fundLabel } from "@/lib/funds";
-import { getPaynowClient, getSiteUrl } from "@/lib/paynow";
-
-const MOBILE_METHODS = new Set(["ecocash", "onemoney"]);
+import { getPesepayClient } from "@/lib/pesepay";
+import { getSiteUrl } from "@/lib/site";
 
 export async function POST(request: NextRequest) {
   const body = await request.json();
-  const { fund, amount, donorName, donorEmail, donorPhone, note, mobileMethod } = body;
+  const { fund, amount, donorName, donorEmail, note } = body;
 
   const amountNumber = Number(amount);
 
@@ -20,17 +19,13 @@ export async function POST(request: NextRequest) {
   if (!Number.isFinite(amountNumber) || amountNumber <= 0) {
     return NextResponse.json({ error: "Please enter a valid amount." }, { status: 400 });
   }
-  if (typeof donorName !== "string" || !donorName.trim() || typeof donorEmail !== "string" || !donorEmail.trim()) {
+  if (
+    typeof donorName !== "string" ||
+    !donorName.trim() ||
+    typeof donorEmail !== "string" ||
+    !donorEmail.trim()
+  ) {
     return NextResponse.json({ error: "Name and email are required." }, { status: 400 });
-  }
-  if (mobileMethod && !MOBILE_METHODS.has(mobileMethod)) {
-    return NextResponse.json({ error: "Unsupported mobile money method." }, { status: 400 });
-  }
-  if (mobileMethod && (typeof donorPhone !== "string" || !donorPhone.trim())) {
-    return NextResponse.json(
-      { error: "A phone number is required for mobile money payments." },
-      { status: 400 }
-    );
   }
 
   const reference = `DON-${randomUUID()}`;
@@ -40,24 +35,19 @@ export async function POST(request: NextRequest) {
     reference,
     donorName: donorName.trim(),
     donorEmail: donorEmail.trim(),
-    donorPhone: donorPhone?.trim() || null,
     fund,
     note: note?.trim() || null,
     amount: amountNumber.toFixed(2),
     currency: "USD",
-    gateway: "paynow",
-    method: mobileMethod ?? "card",
+    gateway: "pesepay",
+    method: "card",
     status: "pending",
   });
 
   try {
-    const paynow = getPaynowClient(returnUrl);
-    const payment = paynow.createPayment(reference, donorEmail.trim());
-    payment.add(fundLabel(fund), amountNumber);
-
-    const response = mobileMethod
-      ? await paynow.sendMobile(payment, donorPhone.trim(), mobileMethod)
-      : await paynow.send(payment);
+    const pesepay = getPesepayClient(returnUrl);
+    const transaction = pesepay.createTransaction(amountNumber, "USD", fundLabel(fund), reference);
+    const response = await pesepay.initiateTransaction(transaction);
 
     if (!response || !response.success) {
       await db
@@ -66,7 +56,7 @@ export async function POST(request: NextRequest) {
         .where(eq(donations.reference, reference));
 
       return NextResponse.json(
-        { error: response?.error ? String(response.error) : "Paynow declined the request." },
+        { error: response?.message ?? "Pesepay declined the request." },
         { status: 502 }
       );
     }
@@ -74,6 +64,7 @@ export async function POST(request: NextRequest) {
     await db
       .update(donations)
       .set({
+        pesepayReference: response.referenceNumber ? String(response.referenceNumber) : null,
         pollUrl: response.pollUrl ? String(response.pollUrl) : null,
         updatedAt: new Date(),
       })
@@ -81,8 +72,7 @@ export async function POST(request: NextRequest) {
 
     return NextResponse.json({
       reference,
-      redirectUrl: response.hasRedirect ? String(response.redirectUrl) : null,
-      instructions: response.instructions ? String(response.instructions) : null,
+      redirectUrl: response.redirectUrl ? String(response.redirectUrl) : null,
     });
   } catch (error) {
     await db
