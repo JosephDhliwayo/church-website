@@ -1,0 +1,21 @@
+CREATE TABLE "donations" (
+	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
+	"reference" text NOT NULL,
+	"donor_name" text NOT NULL,
+	"donor_email" text NOT NULL,
+	"donor_phone" text,
+	"fund" text NOT NULL,
+	"note" text,
+	"amount" numeric(12, 2) NOT NULL,
+	"currency" text DEFAULT 'USD' NOT NULL,
+	"gateway" text NOT NULL,
+	"method" text,
+	"status" text DEFAULT 'pending' NOT NULL,
+	"paynow_reference" text,
+	"pesepay_reference" text,
+	"poll_url" text,
+	"stripe_session_id" text,
+	"created_at" timestamp DEFAULT now() NOT NULL,
+	"updated_at" timestamp DEFAULT now() NOT NULL,
+	CONSTRAINT "donations_reference_unique" UNIQUE("reference")
+);
