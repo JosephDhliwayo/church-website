@@ -1,8 +1,8 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-// Toggle back to false (and push) to bring the site back online.
-const MAINTENANCE_MODE = true;
+// Toggle back to true (and push) to take the site offline again.
+const MAINTENANCE_MODE = false;
 
 export function proxy(request: NextRequest) {
   if (!MAINTENANCE_MODE) return NextResponse.next();
